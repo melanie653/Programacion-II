@@ -1,0 +1,42 @@
+public class Linea {
+
+	    String color;
+
+	    Persona filaPersonas[] = new Persona[50];
+	    int cantFila = 0;
+
+	    main cabinas[] = new main[50];
+	    int cantCabinas = 0;
+
+	    int cantidadCabinas;
+
+	    public Linea(String color) {
+	        this.color = color;
+	    }
+
+	    public void agregarPersona(Persona p) {
+	        filaPersonas[cantFila] = p;
+	        cantFila++;
+	    }
+
+	    public void agregarCabina(int nroCab) {
+	        cabinas[cantCabinas] = new main(nroCab);
+	        cantCabinas++;
+	    }
+
+	    public boolean verificarCabinas() {
+
+	        for (int i = 0; i < cantCabinas; i++) {
+	            main c = cabinas[i];
+
+	            if (c.cantPersonas > 10) return false;
+
+	            float peso = 0;
+
+	            for (int j = 0; j < c.cantPersonas; j++)
+	                peso += c.personasAbordo[j].pesoPersona;
+
+	            if (peso > 850) return false;
+	        }
+	        return true;
+	    }

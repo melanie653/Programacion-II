@@ -1,0 +1,35 @@
+public class MiTeleferico {
+	
+
+	    Linea lineas[] = new Linea[10];
+	    int cantLineas = 0;
+
+	    float cantidadIngresos;
+
+	    public void agregarLinea(String color) {
+	        lineas[cantLineas] = new Linea(color);
+	        cantLineas++;
+	    }
+
+	    public void agregarPersonal(Persona p) {
+	        if (cantLineas > 0)
+	            lineas[0].agregarPersona(p);
+	    }
+
+	    public void agregarCabina(String lineaColor) {
+	        for (int i = 0; i < cantLineas; i++) {
+	            if (lineas[i].color.equals(lineaColor)) {
+	                lineas[i].agregarCabina(lineas[i].cantCabinas + 1);
+	                return;
+	            }
+	        }
+	    }
+
+	    public float calcularIngresoTotal() {
+	        float total = 0;
+	        for (int i = 0; i < cantLineas; i++) {
+	            total = total + lineas[i].ingresoLinea();
+	        }
+	        return total;
+	    }
+	}

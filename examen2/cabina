@@ -1,0 +1,25 @@
+public class Cabina {
+    int nroCabina;
+    Persona personasAbordo[] = new Persona[10];   
+    int cantPersonas = 0;
+
+    public Cabina(int nroCabina) {
+        this.nroCabina = nroCabina;
+    }
+
+   
+    public boolean agregarPersona(Persona p) {
+
+        if (cantPersonas >= 10) return false;
+
+        float pesoTotal = 0;
+        for (int i = 0; i < cantPersonas; i++)
+            pesoTotal = pesoTotal + personasAbordo[i].pesoPersona;
+
+        if (pesoTotal + p.pesoPersona > 850) return false;
+
+        personasAbordo[cantPersonas] = p;  
+        cantPersonas++;
+        return true;
+    }
+}
