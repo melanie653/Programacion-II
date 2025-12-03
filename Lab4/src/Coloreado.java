@@ -1,0 +1,3 @@
+interface Coloreado {
+    String comoColorear();
+}
